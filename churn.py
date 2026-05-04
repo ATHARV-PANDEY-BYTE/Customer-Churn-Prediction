@@ -6,19 +6,19 @@ from sklearn.metrics import accuracy_score
 
 df = pd.read_csv('telco_dataset.csv')
 
-# Graph 1 - Churn Count
+
 df['Churn'].value_counts().plot(kind='bar', color=['green','red'])
 plt.title('Churn vs No Churn')
 plt.savefig('graph1.png')
 plt.close()
 
-# Graph 2 - Monthly Charges
+
 df.boxplot(column='MonthlyCharges', by='Churn')
 plt.title('Monthly Charges vs Churn')
 plt.savefig('graph2.png')
 plt.close()
 
-# Model
+
 df['Churn'] = df['Churn'].map({'Yes': 1, 'No': 0})
 df_model = df.select_dtypes(include=['number'])
 X = df_model.drop('Churn', axis=1)
